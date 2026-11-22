@@ -19,7 +19,7 @@
         <article class="rounded-2xl border border-slate-200 bg-white p-5">
             <div class="flex items-center justify-between">
                 <div class="grid size-11 place-items-center rounded-xl bg-sky-50 text-sky-600">
-                    <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 0-7l.? 0"/><path d="m8 16 8-8"/><circle cx="17" cy="7" r="4"/></svg>
+                    <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M9 3V2h6v1M9 12h6"/></svg>
                 </div>
                 <span class="rounded-full bg-sky-50 px-2.5 py-1 text-xs font-semibold text-sky-600">Aktif</span>
             </div>

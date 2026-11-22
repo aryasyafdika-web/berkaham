@@ -37,6 +37,21 @@ it('rejects a medicine with missing required fields', function () {
     $response->assertSessionHasErrors(['nama_obat', 'kategori', 'bentuk', 'stok', 'satuan']);
 });
 
+it('displays the expiry date validation message when the date is invalid', function () {
+    $response = $this->from(route('obat-anak.create'))->post(route('obat-anak.store'), [
+        'nama_obat' => 'Obat Uji',
+        'kategori' => 'Demam',
+        'bentuk' => 'Sirup',
+        'stok' => 1,
+        'satuan' => 'botol',
+        'tanggal_kedaluwarsa' => 'bukan-tanggal',
+    ]);
+
+    $response->assertSessionHasErrors(['tanggal_kedaluwarsa']);
+    $this->get(route('obat-anak.create'))
+        ->assertSee('The tanggal kedaluwarsa field must be a valid date.');
+});
+
 it('updates a child medicine', function () {
     $obat = ObatAnak::factory()->create();
 

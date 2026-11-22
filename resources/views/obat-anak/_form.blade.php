@@ -31,6 +31,7 @@
     <div>
         <label class="mb-2 block text-sm font-semibold text-slate-700" for="dosis">Dosis/Konsentrasi</label>
         <input id="dosis" name="dosis" value="{{ old('dosis', $obat?->dosis) }}" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100" placeholder="Contoh: 120 mg/5 ml">
+        @error('dosis') <p class="mt-1 text-xs text-red-600" role="alert">{{ $message }}</p> @enderror
     </div>
     <div>
         <label class="mb-2 block text-sm font-semibold text-slate-700" for="stok">Jumlah Stok</label>
@@ -44,13 +45,16 @@
                 <option value="{{ $item }}" @selected(old('satuan', $obat?->satuan ?? 'botol') === $item)>{{ ucfirst($item) }}</option>
             @endforeach
         </select>
+        @error('satuan') <p class="mt-1 text-xs text-red-600" role="alert">{{ $message }}</p> @enderror
     </div>
     <div>
         <label class="mb-2 block text-sm font-semibold text-slate-700" for="tanggal_kedaluwarsa">Tanggal Kedaluwarsa</label>
         <input id="tanggal_kedaluwarsa" name="tanggal_kedaluwarsa" type="date" value="{{ old('tanggal_kedaluwarsa', $obat?->tanggal_kedaluwarsa?->format('Y-m-d')) }}" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100">
+        @error('tanggal_kedaluwarsa') <p class="mt-1 text-xs text-red-600" role="alert">{{ $message }}</p> @enderror
     </div>
     <div class="md:col-span-2">
         <label class="mb-2 block text-sm font-semibold text-slate-700" for="keterangan">Keterangan</label>
         <textarea id="keterangan" name="keterangan" rows="4" class="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100" placeholder="Catatan tambahan...">{{ old('keterangan', $obat?->keterangan) }}</textarea>
+        @error('keterangan') <p class="mt-1 text-xs text-red-600" role="alert">{{ $message }}</p> @enderror
     </div>
 </div>
