@@ -9,3 +9,60 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@media print {
+    @page {
+        size: landscape;
+        margin: 12mm;
+    }
+
+    body {
+        background: #fff !important;
+        color: #0f172a !important;
+    }
+
+    aside,
+    header,
+    .no-print {
+        display: none !important;
+    }
+
+    .app-shell {
+        display: block !important;
+        min-height: 0 !important;
+    }
+
+    .page-content,
+    .report-page {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .report-table {
+        width: 100% !important;
+        min-width: 0 !important;
+        border-collapse: collapse !important;
+    }
+
+    .report-table th,
+    .report-table td {
+        border: 1px solid #cbd5e1 !important;
+        padding: 6px !important;
+    }
+
+    .print-report {
+        border: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .signature {
+        break-inside: avoid;
+    }
+
+    .report-summary,
+    .report-table tr {
+        break-inside: avoid;
+    }
+}

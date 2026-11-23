@@ -9,20 +9,20 @@
         @error('nama_obat') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
     </div>
     <div>
-        <label class="mb-2 block text-sm font-semibold text-slate-700" for="kategori">Kategori</label>
-        <select id="kategori" name="kategori" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100">
+        <label class="mb-2 block text-sm font-semibold text-slate-700" for="category_id">Kategori Obat</label>
+        <select id="category_id" name="category_id" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100">
             <option value="">Pilih kategori</option>
-            @foreach(['Demam', 'Antiinfeksi', 'Batuk/Pilek', 'Suplement', 'Pencernaan', 'Alergi'] as $item)
-                <option value="{{ $item }}" @selected(old('kategori', $obat?->kategori) === $item)>{{ $item }}</option>
+            @foreach($kategori as $item)
+                <option value="{{ $item->id }}" @selected((int) old('category_id', $obat?->category_id) === $item->id)>{{ $item->nama }}</option>
             @endforeach
         </select>
-        @error('kategori') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
+        @error('category_id') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
     </div>
     <div>
         <label class="mb-2 block text-sm font-semibold text-slate-700" for="bentuk">Bentuk Obat</label>
         <select id="bentuk" name="bentuk" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100">
             <option value="">Pilih bentuk</option>
-            @foreach(['Sirup', 'Tablet', 'Tetes', 'Salep', 'Sachet', 'Suspensi'] as $item)
+            @foreach(['Sirup', 'Tablet', 'Kapsul', 'Puyer', 'Drops', 'Salep', 'Suppositoria'] as $item)
                 <option value="{{ $item }}" @selected(old('bentuk', $obat?->bentuk) === $item)>{{ $item }}</option>
             @endforeach
         </select>
@@ -39,9 +39,14 @@
         @error('stok') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
     </div>
     <div>
+        <label class="mb-2 block text-sm font-semibold text-slate-700" for="stok_minimum">Batas Minimum Stok</label>
+        <input id="stok_minimum" name="stok_minimum" type="number" min="0" value="{{ old('stok_minimum', $obat?->stok_minimum ?? $stokMinimum) }}" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100">
+        @error('stok_minimum') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
+    </div>
+    <div>
         <label class="mb-2 block text-sm font-semibold text-slate-700" for="satuan">Satuan</label>
         <select id="satuan" name="satuan" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100">
-            @foreach(['botol', 'strip', 'tube', 'sachet', 'box'] as $item)
+            @foreach(['Botol', 'Strip', 'Tablet', 'Kapsul', 'Tube', 'Sachet', 'Pcs'] as $item)
                 <option value="{{ $item }}" @selected(old('satuan', $obat?->satuan ?? 'botol') === $item)>{{ ucfirst($item) }}</option>
             @endforeach
         </select>
